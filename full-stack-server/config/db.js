@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-// const config = requre("config")
 const db = process.env.URI
 
 const connectDb = async ()=>{
@@ -10,6 +9,7 @@ const connectDb = async ()=>{
         console.error(error.message)
         process.exit(1)
     }
+    console.log("Connected to DB")
 }
 
 module.exports = connectDb
