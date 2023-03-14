@@ -6,7 +6,7 @@ import BookCard from './BookCard';
 import { useState, useEffect } from 'react';
 
 
-const BACK_END_URL = "localhost:3000/api/books"
+const BACK_END_URL = "http://localhost:8001/"
 
 function ShowBookList(props){
 
@@ -18,16 +18,16 @@ function ShowBookList(props){
     axios
     .get(BACK_END_URL)
     .then(res => {
-      setBooks(res);
+      setBooks(res.data);
     })
     .catch(err =>{
-      console.log('Error from ShowBookList');
+      console.log('Error from ShowBookList' + err);
     })
   })
 
   let bookList;
   //check if the books are not empty
-  if(!books) {
+  if(books===[]) {
     bookList = "there is no book recored!";
   } else {
     // if there are book results, map them onto Book Cards
